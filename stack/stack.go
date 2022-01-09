@@ -2,6 +2,7 @@ package stack
 
 import (
 	"errors"
+	"fmt"
 )
 
 type stack struct {
@@ -45,17 +46,13 @@ func (s stack) IsEmpty() bool {
 	return s.top < 0
 }
 
-// List to retrun the stack data as an array
-// returns nil, with error if the stack is empty
-func (s stack) List() ([]interface{}, error) {
+// Display stack values
+func (s stack) Display() {
 	if s.IsEmpty() {
-		return nil, errors.New("stack is empty")
+		return
 	}
 
-	var list []interface{}
 	for i := s.top; i >= 0; i-- {
-		list = append(list, s.elements[i])
+		fmt.Println(s.elements[i])
 	}
-
-	return list, nil
 }
